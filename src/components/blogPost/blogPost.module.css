@@ -1,0 +1,27 @@
+.container{
+    margin-top: 50px;
+}
+
+.contentbox{
+border-bottom: 4px solid black;
+margin: 40px 20px;
+
+padding: 20px 20px;
+}
+.date{
+    color: #0C7EF3;
+    font-weight: 700;
+    font-size: 1.5rem;
+    padding: 15px 5px;
+  display: flex;
+  justify-content: end;
+}
+
+.para{
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+.col{
+    height: 100%;
+  
+}

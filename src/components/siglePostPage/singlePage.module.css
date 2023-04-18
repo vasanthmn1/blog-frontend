@@ -1,0 +1,75 @@
+.container{
+    margin-top: 20px;
+}
+.box1{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.box2{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.para{
+    font-size: 1rem;
+}
+.edit{
+    font-size: 1.7rem;
+    margin-right: 20px;
+    color: blue;
+    cursor: pointer;
+}
+.delete{
+    font-size: 1.7rem;
+    color: red;
+    cursor: pointer;
+}
+.time{
+    font-weight: 600;
+    color: #88BB40;
+}
+.logoutbox{
+    padding: 30px;
+  }
+  .logoutbtn{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    align-items: center;
+margin-top: 20px;
+  }
+.logoutDel{
+    background-color: rgba(255, 2, 2, 0.733);
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+}
+.logoutDel:hover{
+    background-color: red;
+}
+.logoutChannel{
+    cursor: pointer;
+    color: #fff;
+
+    background-color: rgba(132, 145, 209, 0.634);
+    padding: 10px 20px;
+}
+.logoutChannel:hover{
+    cursor: pointer;
+    color: #fff;
+
+    background-color: rgb(132, 145, 209);
+    padding: 10px 20px;
+}
+@media only screen and (max-width:500px) {
+
+.logoutChannel{
+    cursor: pointer;
+    color: #fff;
+margin-left: 30px;
+    background-color: rgba(132, 145, 209, 0.634);
+    padding: 10px 20px;
+}
+}

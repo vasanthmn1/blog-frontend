@@ -1,0 +1,31 @@
+.sidebar {
+    
+    padding-bottom: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sidebarItem {
+   text-align: center;
+   font-weight: 600;
+  }
+  
+  
+  .sidebarItem > img {
+    margin-top: 15px;
+  }
+  
+  .sidebarItem > p {
+    padding: 30px;
+  }
+  .sidebarListItem {
+    display: inline-block;
+    width: 50%;
+    margin-top: 15px;
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,367 @@
+
+
+.header{
+    width: 100%;
+background-color: black;
+    line-height: 70px;
+    box-shadow: 3px 3px 8px -3px #ddd;
+    /* position: fixed ; */
+    z-index: 999;
+    position: sticky;
+    top: 0;
+}
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+}
+.logo img{
+    padding: 0 5px;
+    width: 70px;
+}
+
+.links{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+  
+}
+.lgmenu{
+    display: flex;
+    justify-content: space-between;
+   padding-top: 20px;
+    width: 500px;
+}
+.menu{
+    display: flex;
+    justify-content: space-between;
+    width: 500px;
+    padding-top: 20px;
+}
+.nav__item{
+    font-weight: 700;
+    text-decoration: none !important;
+    color: #88BB40 !important;
+    transition: 0.5s all ease;
+    font-size: 1.3rem;
+}
+.active{
+    color: #0C7EF3;
+    
+    text-decoration: none ;
+    font-size: 1.3rem;
+}
+.mobile_menu{
+    display: none;
+}
+.nav__item:hover{
+    color: #D78616;
+}
+.active:hover{
+    color: #fff;
+}
+.contact{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ 
+}
+
+.login button{
+    margin-right: 30px;
+    background-color:#0C7EF3 ;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.5s all ease;
+    line-height: normal;
+
+}
+.register button{
+    background-color:#0C7EF3 ;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 2px;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+    line-height: normal;
+
+    transition: 0.5s all ease;
+}
+.register button:hover{
+    background-color:#88BB40 ;
+}
+.login button:hover{
+    background-color:#88BB40 ;
+}
+.contact a{
+    margin-top: -30px;  
+}
+.toggleIcon{
+    color: #fff;
+    display: none;
+    font-size: 2.5rem !important;
+}
+.link{
+    color: inherit;
+    text-decoration: none;
+}
+
+.porile{
+    display: flex;
+margin-right: 30px;
+}
+.exit{
+    color: red;
+    font-size: 2rem;
+    margin-top: -15px;
+    margin-left: 10px;
+}
+.profileImg {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    margin-top: -20px;
+position: relative;
+
+  }
+  .profilelink{
+    position: absolute;
+   
+top: 75px;
+    background-color: #fff;
+    color: initial;
+    text-decoration: none;
+    padding: 0 !important;
+    height:0px ;
+  }
+
+  .profilelink a{
+   border-radius: 2px;
+    padding:10px 20px;
+    background-color: #88BB40;
+   text-decoration: none;
+    font-weight: 700;
+    color:#fff;
+  }
+  .logoutbox{
+    padding: 30px;
+  }
+  .logoutbtn{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 10px;
+    align-items: center;
+margin-top: 20px;
+  }
+.logoutDel{
+    background-color: rgba(255, 2, 2, 0.733);
+    padding: 10px 20px;
+    color: #fff;
+    cursor: pointer;
+}
+.logoutDel:hover{
+    background-color: red;
+}
+.logoutChannel{
+    cursor: pointer;
+    color: #fff;
+
+    background-color: rgba(132, 145, 209, 0.634);
+    padding: 10px 20px;
+}
+.logoutChannel:hover{
+    cursor: pointer;
+    color: #fff;
+
+    background-color: rgb(132, 145, 209);
+    padding: 10px 20px;
+}
+@media only screen and (max-width:1000px) {
+    .header{
+     padding: 20px 0px;
+    }
+    .toggleIcon{
+        font-size: 2.5rem !important;
+        display: block;
+    }
+  
+    .links{
+       display: none;
+
+    }
+    .lgmenu{
+        display: none;
+    }
+     .navigationa{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #00000073;
+        z-index: 999;
+    
+    }
+    .menu{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 50%;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: start ;
+        line-height: 6.5rem;
+        background-color: #88BB40;
+       padding-left:  30px;
+       overflow-x: scroll;
+       
+    }.mobile_menu{
+        display: block;
+       margin-left: 40px;
+       margin-top: -20px;
+    }
+    .nav__item{
+        color: #fff !important;
+        padding: 20px 0;
+    }
+    .nav__item:hover{
+        color: #fff;
+    }
+    .active:hover{
+        color: #fff;
+    }
+    .active{
+        color: #0C7EF3;
+        padding: 10px 25px;
+        margin-left: -15px;
+        border-radius: 5px;
+    }
+     
+    h6{
+        font-size: 1rem !important;
+    }
+      h4{
+        font-size: 1rem !important;
+    }
+    
+    .porile{
+        display: flex;
+    margin-right: -30px !important;
+    }
+    .exit{
+        color: red;
+        font-size: 2rem;
+        margin-top: -15px;
+        margin-left: 10px;
+    }
+    .profileImg {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        object-fit: cover;
+        cursor: pointer;
+        margin-top: -20px;
+    position: relative;
+    
+      }
+    .profilelink{
+        position: absolute;
+        top: 45px !important;
+    
+        background-color: #fff;
+        color: initial;
+        text-decoration: none;
+        padding: 0 !important;
+        height:0px ;
+      }
+    
+      .profilelink a{
+        padding:10px 20px;
+        background-color: #88BB40;
+       text-decoration: none;
+        font-weight: 700;
+        color:#fff;
+      }
+      .contact{
+        margin-top: 20px;
+      }
+}
+
+@media only screen and (max-width:500px) {
+    h6{
+        font-size: 0.8rem !important;
+    }
+      h4{
+        font-size: 1rem !important;
+    }
+   .contact a{
+    font-size: 1rem !important;
+    
+    color: #88BB40 !important;
+   }
+   .login button{
+    margin-right: 0px;
+    background-color:#0C7EF3 ;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 2px;
+    color: #fff;
+    cursor: pointer;
+    font-weight: 700;
+    transition: 0.5s all ease;
+    margin-right: 20px;
+
+}
+.register button{
+    margin-right: -30px;
+    background-color:#fff ;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 2px;
+    color: #88BB40;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.5s all ease;
+}
+.register button:hover{
+    background-color:#fff ;
+}
+.login button:hover{
+    background-color:#88BB40 ;
+}
+   .mobile_menu{
+    display: block;
+
+   margin-top: -25px;
+  
+}
+.toggleIcon{
+   margin-top: 7px;
+    font-size: 1.5rem !important;
+}
+.profilelink a{
+  
+     color:#fff !important;
+   }
+
+.logoutChannel{
+    cursor: pointer;
+    color: #fff;
+margin-left: 30px;
+    background-color: rgba(132, 145, 209, 0.634);
+    padding: 10px 20px;
+}
+}
