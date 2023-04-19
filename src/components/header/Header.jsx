@@ -9,7 +9,7 @@ import { BiExit } from 'react-icons/bi'
 import { logout } from '../../redux/feutures/AuthSlice'
 import Logout from '../logoutUser/Logout'
 const Header = () => {
-    const link = [
+    const links = [
         {
             path: '/home',
             dispaly: 'home'
@@ -29,10 +29,13 @@ const Header = () => {
 
     ]
     const { user } = useSelector((state) => state.auth)
+    const { link } = useSelector((state) => state.link)
+
+
     const navigater = useNavigate()
     const dispatch = useDispatch()
     const myUser = user ? user.user : null;
-
+    console.log(myUser);
     const [showMenu, setShowMenu] = useState(false);
 
     const [open, setOpen] = useState(false)
@@ -67,7 +70,7 @@ const Header = () => {
 
                     <ul className={showMenu ? classes.menu : classes.lgmenu}>
                         {
-                            link.map((val, idx) => {
+                            links.map((val, idx) => {
                                 return (
                                     <li key={idx}>
                                         <NavLink className={navClass => navClass.isActive ? classes.active : classes.nav__item} to={val.path} >{val.dispaly}</NavLink>
@@ -82,15 +85,23 @@ const Header = () => {
 
                 <div className={classes.contact}>
                     {
-                        myUser ?
+                        user ?
                             <div className={classes.porile}>
 
-                                <img className={classes.profileImg} onClick={openProfile} src={logo} alt="" />
+
+                                {
+                                    myUser.profilePic === "" ?
+                                        <img className={classes.profileImg} onClick={openProfile} src={logo} alt="" />
+
+                                        :
+                                        <img className={classes.profileImg} onClick={openProfile} src={`${link}/images/${myUser.profilePic}`} alt="" />
+                                }
+
                                 {
                                     open ?
                                         <ul className={classes.profilelink}>
                                             <li>
-                                                <Link onClick={openProfile} to={'/about'}>
+                                                <Link onClick={openProfile} to={'/profile'}>
                                                     Profile
                                                 </Link>
                                             </li>

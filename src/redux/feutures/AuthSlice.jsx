@@ -30,11 +30,17 @@ const AuthSlice = createSlice({
         },
         logout: (state, action) => {
             localStorage.removeItem('user')
+        },
+        updateuser: (state, action) => {
+            state.isLoading = true
+            state.user = action.payload
+            console.log(state.user);
+
         }
     }
 })
 
 
-export const { loginStart, loginSuccess, loginFaluire, logout } = AuthSlice.actions
+export const { loginStart, loginSuccess, loginFaluire, logout, updateuser } = AuthSlice.actions
 
 export default AuthSlice.reducer

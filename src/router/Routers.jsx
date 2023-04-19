@@ -8,6 +8,7 @@ import Register from '../pages/register/Register'
 import Login from '../pages/login/Login'
 import { useSelector } from 'react-redux'
 import Write from '../pages/write/Write'
+import Profile from '../pages/profile/Profile'
 
 
 const Router = () => {
@@ -20,6 +21,8 @@ const Router = () => {
                     <Route path='/home' element={<Home />} />
                     <Route path='about' element={<About />} />
                     <Route path='write' element={<Write />} />
+                    <Route path='profile' element={<Profile />} />
+
 
 
                     <Route path='post/:id' element={<SiglePostPage />} />

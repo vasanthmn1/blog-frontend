@@ -32,6 +32,7 @@ const SiglePostPage = () => {
         const data = await axios.get(`${link}/post/${params.id}`)
         setData(data.data)
     }
+    console.log(data);
     const handelDelete = async () => {
 
         try {
