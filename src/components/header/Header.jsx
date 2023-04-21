@@ -15,27 +15,23 @@ const Header = () => {
             dispaly: 'home'
         },
         {
-            path: '/about',
-            dispaly: 'About'
-        },
-        {
             path: '/Write',
             dispaly: 'write'
         },
         {
-            path: '/contact',
-            dispaly: 'contact'
+            path: '/profile',
+            dispaly: 'profile'
         },
 
     ]
     const { user } = useSelector((state) => state.auth)
     const { link } = useSelector((state) => state.link)
 
-
+    console.log(user);
     const navigater = useNavigate()
     const dispatch = useDispatch()
-    const myUser = user ? user.user : null;
-    console.log(myUser);
+    // const myUser = user ? user.user : user;
+    // console.log(user);
     const [showMenu, setShowMenu] = useState(false);
 
     const [open, setOpen] = useState(false)
@@ -88,14 +84,7 @@ const Header = () => {
                         user ?
                             <div className={classes.porile}>
 
-
-                                {
-                                    myUser.profilePic === "" ?
-                                        <img className={classes.profileImg} onClick={openProfile} src={logo} alt="" />
-
-                                        :
-                                        <img className={classes.profileImg} onClick={openProfile} src={`${link}/images/${myUser.profilePic}`} alt="" />
-                                }
+                                <img className={classes.profileImg} onClick={openProfile} src={`${link}/images/${user.profilePic}`} alt="" />
 
                                 {
                                     open ?

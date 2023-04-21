@@ -32,24 +32,20 @@ const Home = () => {
     }
 
     return (
-        <div className=''>
+        <div className={classes.container}>
             <Banner />
-            <Container className={classes.container} >
+            <Container className={classes.box1} >
                 <Row >
-                    <Col lg="9"  >
-                        <Row className={classes.contentRow}>
-                            {
-                                data.map((val, idx) => {
-                                    return (
-                                        <BlogPost val={val} key={idx} />
 
-                                    )
-                                })
-                            }
+                    {/* <Row className={classes.contentRow}> */}
+                    {
+                        data.map((val, idx) => {
+                            return (
+                                <BlogPost val={val} key={idx} />
 
-                        </Row>
-                    </Col>
-                    <Sidebar />
+                            )
+                        })
+                    }
                 </Row>
             </Container>
         </div>

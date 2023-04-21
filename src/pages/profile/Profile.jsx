@@ -1,113 +1,145 @@
-import React, { useState } from 'react'
-import './profile.module.css'
+import React, { useEffect, useState } from 'react'
+import classes from './profile.module.css'
 import axios from "axios";
 import { useDispatch, useSelector } from 'react-redux';
 import { updateuser } from '../../redux/feutures/AuthSlice';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useFormik } from 'formik';
+import addimg from '../../assets/addimg.png'
+import { Col, Row } from 'react-bootstrap';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Profile = () => {
 
-    const [file, setFile] = useState(null);
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
     const [success, setSuccess] = useState(false);
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    // const { user, dispatch } = useContext(Context);
+
     const PF = "http://localhost:7000/images/"
     const { link } = useSelector((state) => state.link)
     const { user } = useSelector((state) => state.auth)
-    const User = user.user;
-    // console.log(user);
+    const [getData, setGetData] = useState({})
+    const getuser = async () => {
+        if (user) {
+            let data = await axios.get(`${link}/user/${user._id}`)
 
+            setGetData(data.data.user)
+        }
+    }
+    useEffect(() => {
+        getuser()
+    }, [])
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
+    let myFormik = useFormik({
+        initialValues: {
+            userId: user?._id,
+            file: ""
+        },
+        validate: (values) => {
+            let err = {}
+            if (!values.file) {
+                err.file = "Please select an image file";
+                toast.error('Not Update Your Profile pictures')
+            }
 
-        const updatedUser = {
-            userId: User._id,
-            username,
-            email,
-            password,
-        };
-        if (file) {
-            const data = new FormData();
-            const filename = Date.now() + file.name;
-            data.append("name", filename);
-            data.append("file", file);
-            updatedUser.profilePic = filename;
+            return err
+        },
+        onSubmit: async (values) => {
+            const file = myFormik.values.file
+            if (file) {
+                const data = new FormData();
+                const filename = Date.now() + file.name;
+                data.append("name", filename);
+                data.append("file", file);
+                myFormik.values.profilePic = filename;
+                try {
+                    const photo = await axios.post(`${link}/upload`, data);
+
+                } catch (err) { }
+            }
             try {
-                await axios.post(`${link}/upload`, data);
-            } catch (err) { }
+                const res = await axios.put(`${link}/user/${user._id}`, values,);
+                console.log(res.data);
+                localStorage.setItem('user', JSON.stringify(res.data))
+
+                toast.success(' Profile pictures Update Success full')
+
+                dispatch(updateuser(res.data))
+                navigate('/')
+            } catch (err) {
+
+            }
         }
-        try {
-            const res = await axios.put(`${link}/user/` + User._id, updatedUser);
-            setSuccess(true);
-            // localStorage.removeItem('user')
-            localStorage.setItem('user', JSON.stringify(res.data))
-            console.log(res.data);
-            dispatch(updateuser({ user: res.data }))
-            navigate('/')
-            // dispatch({ type: "UPDATE_SUCCESS", payload: res.data });
-        } catch (err) {
-            // dispatch({ type: "UPDATE_FAILURE" });
-        }
-    };
+    })
+
+    console.log(user);
+
     return (
-        <div className="settings">
-            <div className="settingsWrapper">
-                <div className="settingsTitle">
-                    <span className="settingsUpdateTitle">Update Your Account</span>
-                    <span className="settingsDeleteTitle">Delete Account</span>
-                </div>
-                <form className="settingsForm" onSubmit={handleSubmit}>
-                    <label>Profile Picture</label>
-                    <div className="settingsPP">
-                        <img
-                            src={file ? URL.createObjectURL(file) : PF + User.profilePic}
-                            alt=""
-                        />
-                        <label htmlFor="fileInput">
-                            asas
-                        </label>
-                        <input
-                            type="file"
-                            id="fileInput"
-                            style={{ display: "none" }}
-                            onChange={(e) => setFile(e.target.files[0])}
-                        />
+        <>
+            {
+                user ?
+                    <div className={classes.container}>
+                        <ToastContainer />
+                        <div className="">
+                            <Row className={classes.contantbox} >
+                                <Col md="4" lg='2'>
+                                    <form
+                                        className="settingsForm" onSubmit={myFormik.handleSubmit}>
+                                        <label className={classes.profilelable}>Profile Picture</label>
+
+                                        <div className={classes.img}>
+
+                                            <img
+
+                                                src={myFormik.values.file ?
+                                                    URL.createObjectURL(myFormik.values.file) : PF + user.profilePic
+
+                                                }
+                                                alt=""
+                                            />
+
+
+
+
+                                            <input
+                                                type="file"
+                                                id="fileInput"
+                                                onChange={(e) =>
+                                                    myFormik.setFieldValue('file', e.currentTarget.files[0])}
+                                            />
+                                        </div>
+                                        <button className={classes.btn}
+                                            type='submit'
+                                        >
+                                            Update
+                                        </button>
+                                        <h4>
+
+                                        </h4>
+                                    </form>
+                                </Col>
+                                <Col md='6' className={classes.box}>
+                                    <div className={classes.heading}>
+                                        <h2 className={classes.username}>
+                                            Username:<span>{getData.username}</span>
+                                        </h2>
+                                        <h2 className={classes.email}>
+                                            Eamil: <span>{getData.email}</span>
+                                        </h2>
+                                    </div>
+                                </Col>
+
+                            </Row>
+                        </div>
+                        {/* <Sidebar /> */}
+                    </div> :
+                    <div className={""}>
+                        <h3>  Create Your Profile Next You See Your Profile Page </h3>
+                        <Link to={'/login'} style={{ textDecoration: 'none', fontSize: '1.2rem' }}>Login</Link>
                     </div>
-                    <label>Username</label>
-                    <input
-                        type="text"
-                        placeholder={User.username}
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <label>Email</label>
-                    <input
-                        type="text"
-                        placeholder={User.email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <label>Password</label>
-                    <input
-                        type="password"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <button className="settingsSubmit" type="submit">
-                        Update
-                    </button>
-                    {success && (
-                        <span
-                            style={{ color: "green", textAlign: "center", marginTop: "20px" }}
-                        >
-                            Profile has been updated...
-                        </span>
-                    )}
-                </form>
-            </div>
-            {/* <Sidebar /> */}
-        </div>
+            }
+        </>
     );
 }
 

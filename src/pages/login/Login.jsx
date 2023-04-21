@@ -26,6 +26,8 @@ const Login = () => {
 
             if (!values.email) {
                 err.email = "Enter full email"
+            } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+                err.email = 'Invalid email address !!';
             }
             if (!values.password) {
                 err.password = "Enter password"
@@ -38,8 +40,9 @@ const Login = () => {
             dispatch(loginStart())
             try {
                 const res = await axios.post(`${link}/auth/login`, values)
-                localStorage.setItem('user', JSON.stringify(res.data))
-                dispatch(loginSuccess(res.data))
+                localStorage.setItem('user', JSON.stringify(res.data.user))
+                console.log(res.data.user);
+                dispatch(loginSuccess(res.data.user))
                 navigater('/')
             } catch (error) {
                 console.log(error);
@@ -69,6 +72,7 @@ const Login = () => {
                         value={myFormik.values.email}
                         name='email'
                     />
+                    <span className={classes.emailSpan}>  {myFormik.errors.email && myFormik.touched.email ? myFormik.errors.email : null} </span>
                     <label>Password:</label>
                     <input
                         className={

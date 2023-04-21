@@ -64,3 +64,8 @@ input:focus{
  .loginlink a{
   color: rgb(0, 94, 255);
  }
+ .emailSpan{
+  color: red;
+  font-size: 1.1rem;
+  margin-top: 3px;
+ }
