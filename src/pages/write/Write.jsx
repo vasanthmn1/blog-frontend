@@ -116,23 +116,24 @@ const Write = () => {
                                         />
                                         <p className={classes.warring}>{myFormik.errors.title && myFormik.touched.title ? myFormik.errors.title : null}</p>
                                     </Col>
-                                    <Col md='12'>
-                                        <div className={""}>
-                                            <textarea
-                                                rows="8"
-                                                name='desc'
-                                                // className={classes.descInput}
-                                                className={myFormik.errors.desc && myFormik.touched.desc ? classes.descInputWarinng : classes.descInput}
-                                                onBlur={myFormik.handleBlur}
-                                                placeholder={"Tell your story..."}
-                                                // placeholder="Tell your story..."
-                                                type="text"
+                                    <Col lg='12' >
+
+                                        <textarea
+                                            rows="8"
+
+                                            name='desc'
+
+                                            className={myFormik.errors.desc && myFormik.touched.desc ? classes.descInputWarinng : classes.descInput}
+                                            onBlur={myFormik.handleBlur}
+                                            placeholder={"Tell your story..."}
+
+                                            type="text"
 
 
-                                                onChange={myFormik.handleChange}
-                                            ></textarea>
-                                            <p className={classes.warring}>{myFormik.errors.desc && myFormik.touched.desc ? myFormik.errors.desc : null}</p>
-                                        </div>
+                                            onChange={myFormik.handleChange}
+                                        ></textarea>
+                                        <p className={classes.warring}>{myFormik.errors.desc && myFormik.touched.desc ? myFormik.errors.desc : null}</p>
+
                                         <button
                                             disabled={isLoding}
 

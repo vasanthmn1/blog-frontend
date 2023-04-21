@@ -103,6 +103,7 @@ const Profile = () => {
 
 
                                             <input
+                                                className={classes.imguploadinput}
                                                 type="file"
                                                 id="fileInput"
                                                 onChange={(e) =>
