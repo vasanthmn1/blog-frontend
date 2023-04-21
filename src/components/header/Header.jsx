@@ -27,11 +27,10 @@ const Header = () => {
     const { user } = useSelector((state) => state.auth)
     const { link } = useSelector((state) => state.link)
 
-    console.log(user);
+
     const navigater = useNavigate()
     const dispatch = useDispatch()
-    // const myUser = user ? user.user : user;
-    // console.log(user);
+
     const [showMenu, setShowMenu] = useState(false);
 
     const [open, setOpen] = useState(false)

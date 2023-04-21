@@ -10,6 +10,7 @@ const Banner = () => {
                 <div className={classes.data}>
                     <h1>Create a blog.</h1>
                     <p>
+
                         Share your story with the world. Stand <br />
                         out with a professionally-designed blog<br />
                         website that can be customized to fit<br />

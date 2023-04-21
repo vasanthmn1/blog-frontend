@@ -16,9 +16,9 @@ const BlogPost = ({ val }) => {
                 <div className={classes.imgContainer}>
                     {
                         val.poto === undefined || val.poto === "" ?
-                            <img className={classes.img} fluid src={img1} />
+                            <img className={classes.img} src={img1} />
                             :
-                            <img className={classes.img} fluid src={`${link}/images/${val.poto}`} />
+                            <img className={classes.img} src={`${link}/images/${val.poto}`} />
 
                     }
                 </div>

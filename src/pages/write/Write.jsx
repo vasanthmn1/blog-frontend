@@ -10,13 +10,11 @@ import img from '../../assets/blog2.jpg'
 import { Link } from 'react-router-dom';
 
 const Write = () => {
-    // const [title, setTitle] = useState("");
-    // const [desc, setDesc] = useState("");
-    // const [file, setFile] = useState(null);
+
     const { user } = useSelector((state) => state.auth)
     const { link } = useSelector((state) => state.link)
     const [isLoding, setisLoding] = useState(false)
-    console.log(user);
+
 
     let myFormik = useFormik({
         initialValues: {
@@ -60,7 +58,7 @@ const Write = () => {
                 data.append("name", filename);
                 data.append("file", file);
                 myFormik.values.poto = filename;
-                console.log(data);
+
                 try {
 
                     await axios.post(`${link}/upload`, data);
@@ -75,10 +73,7 @@ const Write = () => {
     })
 
 
-    useEffect(() => {
-        console.log(myFormik.values.file)
-    }, [])
-    console.log(myFormik.values.file);
+
     return (
         <>
             {
