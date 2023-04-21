@@ -8,7 +8,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import moment from 'moment'
 import Sidebar from '../sidbar/Sidebar'
-import ConformDeletePop from '../conformDeletePop/conformDeletePop'
+import ConformDeletePop from '../conformDeletePop/ConformDeletePop'
 const SiglePostPage = () => {
     const [pop, SetPop] = useState(false)
     const [isLoading, setIsLoading] = useState(true);
