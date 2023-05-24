@@ -100,14 +100,14 @@ const Header = () => {
                             :
 
                             <>
-                                <Link className={classes.login}>
-                                    <button>
-                                        <Link to={'/login'} className={classes.link}>  Login</Link>
+                                <Link to={'/login'} className={classes.login}>
+                                    <button className={classes.link}>
+                                        Login
                                     </button>
                                 </Link>
-                                <Link className={classes.register}>
-                                    <button>
-                                        <Link to={'/register'} className={classes.link}>  Register</Link>
+                                <Link to={'/register'} className={classes.register}>
+                                    <button className={classes.link}>
+                                        Register
                                     </button>
                                 </Link>
                             </>

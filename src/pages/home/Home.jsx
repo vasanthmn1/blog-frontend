@@ -8,10 +8,12 @@ import classes from './home.module.css'
 import img1 from '../../assets/blog4.jpg'
 import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
-import { addData } from '../../redux/feutures/PostDataSlice'
+import { PostRequest, addData } from '../../redux/feutures/PostDataSlice'
 import moment from 'moment/moment'
 import BlogPost from '../../components/blogPost/BlogPost'
 import Sidebar from '../../components/sidbar/Sidebar'
+import Loader from '../../components/loader/Loader'
+
 
 
 
@@ -20,13 +22,14 @@ const Home = () => {
     const dispatch = useDispatch()
     const { search } = useLocation()
     const { link } = useSelector((state) => state.link)
-    const { data } = useSelector((state) => state.post)
+    const { data, isLoading } = useSelector((state) => state.post)
 
     useEffect(() => {
 
         fetchData()
     }, [search])
     const fetchData = async () => {
+        dispatch(PostRequest())
         const postdata = await axios.get(`${link}/post${search}`)
         dispatch(addData(postdata.data))
     }
@@ -35,18 +38,22 @@ const Home = () => {
         <div className={classes.container}>
             <Banner />
             <Container className={classes.box1} >
-                <Row >
+                {
+                    isLoading ? <Loader /> :
+                        <Row >
 
-                    {/* <Row className={classes.contentRow}> */}
-                    {
-                        data.map((val, idx) => {
-                            return (
-                                <BlogPost val={val} key={idx} />
+                            {/* <Row className={classes.contentRow}> */}
+                            {
+                                data.map((val, idx) => {
+                                    return (
+                                        <BlogPost val={val} key={idx} />
 
-                            )
-                        })
-                    }
-                </Row>
+                                    )
+                                })
+                            }
+                        </Row>
+                }
+
             </Container>
         </div>
     )

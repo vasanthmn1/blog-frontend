@@ -1,9 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-
-
-
-
 const initialState = {
     link: import.meta.env.VITE_ADD_Link,
 }
