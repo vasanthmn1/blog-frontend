@@ -83,7 +83,7 @@ const Header = () => {
                         user ?
                             <div className={classes.porile}>
 
-                                <img className={classes.profileImg} onClick={openProfile} src={`${link}/images/${user.profilePic}`} alt="" />
+                                <img className={classes.profileImg} onClick={openProfile} src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkIPx3ZoPBdO8HW6gDEHmje-43ZFsn0cVucQ&usqp=CAU`} alt="" />
 
                                 {
                                     open ?

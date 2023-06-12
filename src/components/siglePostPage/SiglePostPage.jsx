@@ -15,9 +15,8 @@ const SiglePostPage = () => {
     const { link } = useSelector((state) => state.link)
 
     const { user } = useSelector((state) => state.auth)
-    // const User = user.user
-    console.log(user);
-    const dispatch = useDispatch()
+
+
     const params = useParams()
     const navigate = useNavigate()
 
@@ -39,14 +38,14 @@ const SiglePostPage = () => {
             setIsLoading(false);
         }
     }
-    console.log(data);
+
     const handelDelete = async () => {
 
         try {
             const del = await axios.delete(`${link}/post/delete/${params.id}`, {
                 data: { username: user.username }
             })
-            console.log(del);
+
             getdata()
             navigate('/')
         } catch (error) {
@@ -64,9 +63,8 @@ const SiglePostPage = () => {
                     <Container className={classes.container}>
                         <Row>
                             <Col md="12" >
-
                                 <div>
-                                    <img className={classes.img} src={`${link}/images/${data.poto}`} fluid alt='img' />
+                                    <img className={classes.img} src={data.poto.url} fluid alt='img' />
                                 </div>
                             </Col>
                             <Col md="12">

@@ -6,29 +6,18 @@
   min-height : 100vh;
   height: 100%;
 }
-.profilelable{
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #0C7EF3;
-}
-.img{
-    width:200px;
-  
-}
-.img img{
-  width: 100%;
 
-    object-fit: contain;
-}
-.contantbox{
-    display: flex;
-}
 .heading{
     padding-left: 40px;
     padding-top: 40px;
     
 }
-.heading .username{
+.box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.heading .user{
 background-color: aliceblue;
 padding: 15px;
 border-radius: 3px;
@@ -36,30 +25,6 @@ box-shadow: 1px -1px 17px 7px rgba(207,246,221,0.67) inset;
 -webkit-box-shadow: 1px -1px 17px 7px rgba(207,246,221,0.67) inset;
 -moz-box-shadow: 1px -1px 17px 7px rgba(207,246,221,0.67) inset;
 }
-.heading .email{
-    background-color: aliceblue;
-    padding: 15px;
-    border-radius: 3px;
-    box-shadow: 1px -1px 17px 7px rgba(207,246,221,0.67) inset;
-    -webkit-box-shadow: 1px -1px 17px 7px rgba(207,246,221,0.67) inset;
-    -moz-box-shadow: 1px -1px 17px 7px rgba(207,246,221,0.67) inset;
-    }
-    .btn{
-        background-color: #0C7EF3;
-        padding: 10px 20px;
-        border: none;
-        border-radius: 10px;
-        color: #fff;
-    }
-    .imguploadinput{
-        min-width: 300px;
-    }
-    @media only screen and (max-width:500px){
-
-     
-        .heading{
-            padding-left: 0px;
-            padding-top: 40px;
-            
-        }
-    }
+.heading .user span{
+    margin-left: 20px;
+}

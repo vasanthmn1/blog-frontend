@@ -8,6 +8,7 @@ import { useFormik } from 'formik';
 import { Col, Row } from 'react-bootstrap';
 import img from '../../assets/blog2.jpg'
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
 
 const Write = () => {
 
@@ -20,7 +21,7 @@ const Write = () => {
         initialValues: {
             title: "",
             desc: "",
-            file: null,
+            poto: null,
             username: user?.username
         },
         validate: (values) => {
@@ -31,47 +32,75 @@ const Write = () => {
             if (!values.title) {
                 err.title = "Enter Title in Your blog "
             }
-            if (values.title.length < 5) {
-                err.title = "minumam 5 letters "
+            if (values.title.length < 3) {
+                err.title = "minumam 3 letters "
             }
 
             if (!values.desc) {
                 err.desc = "Fill the description "
             }
-            if (values.desc.length < 25) {
+            if (values.desc.length < 5) {
                 err.desc = "minumam 25 letters "
             }
-            if (!values.file) {
-                err.file = "Upload one image in Your Blog"
+            if (!values.poto) {
+                err.poto = "Upload one image in Your Blog"
             }
 
             return err
         },
 
         onSubmit: async (values) => {
-
-            const file = myFormik.values.file
-            if (file) {
-
-                const data = new FormData();
-                const filename = Date.now() + file.name;
-                data.append("name", filename);
-                data.append("file", file);
-                myFormik.values.poto = filename;
-
-                try {
-
-                    await axios.post(`${link}/upload`, data);
-                } catch (err) { }
-            }
             try {
                 setisLoding(true)
-                const res = await axios.post(`${link}/post/create`, values);
+                const res = await axios.post(`${link}/post/create`,
+                    {
+                        title: values.title,
+                        poto: {
+                            public_id: values.poto.name,
+                            url: values.poto
+                        },
+                        desc: values.desc,
+                        username: values.username
+                    },
+
+                );
+                setisLoding(false)
+
                 window.location.replace("/post/" + res.data._id);
-            } catch (err) { }
+
+            } catch (error) {
+                toast.error(error)
+                toast.error("Maximum 5kb image upload")
+
+                if (error.response) {
+                    console.log('Server Error:', error.response.data);
+                    toast.error(error.response.data)
+                } else {
+                    console.log('Request Error:', error.message);
+                    toast.error(error.response)
+
+                }
+                setisLoding(false)
+                // toast.error('Server Error:', error.response.data)
+            }
+
+
         }
     })
+    const handleImage = (e) => {
+        const file = e.target.files[0];
+        setFileToBase(file);
+        console.log(file);
+    }
 
+    const setFileToBase = (file) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+            myFormik.setFieldValue("poto", reader.result)
+        }
+
+    }
 
 
     return (
@@ -79,12 +108,16 @@ const Write = () => {
             {
                 user ?
                     <div className={classes.container}>
+                        <ToastContainer />
                         <h3>Write Your Blog</h3>
                         <div className={classes.imgContainer}>
-                            {myFormik.values.file && (
-                                <img className={""} src={URL.createObjectURL(myFormik.values.file)} alt="" />
-                            )}
-                            {/* <img src={img} /> */}
+                            {myFormik.values.poto ? (
+                                <img
+
+                                    src={myFormik.values.poto}
+                                    alt={myFormik.values.title}
+                                />
+                            ) : <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjl3C3TaTxwJToSwA6E4EGA1rlotxVf7XAmFIKNugGpQ&s' />}
                         </div>
                         <div className={classes.frombox}>
                             <form onSubmit={myFormik.handleSubmit}>
@@ -96,12 +129,11 @@ const Write = () => {
 
                                         </label>
                                         <input
-                                            name='file'
+                                            name="poto"
                                             type="file"
                                             id="fileInput"
                                             accept='image/*'
-                                            onChange={(e) =>
-                                                myFormik.setFieldValue('file', e.currentTarget.files[0])}
+                                            onChange={handleImage}
                                         />
                                         <p className={classes.warring}>{myFormik.errors.file && myFormik.touched.file ? myFormik.errors.file : null}</p>
                                     </Col>

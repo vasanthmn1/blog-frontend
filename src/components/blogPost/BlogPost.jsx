@@ -9,7 +9,6 @@ const BlogPost = ({ val }) => {
 
     const { link } = useSelector((state) => state.link)
 
-
     return (
         <Col lg="4"  >
             <div className={classes.contentbox}>
@@ -18,7 +17,7 @@ const BlogPost = ({ val }) => {
                         val.poto === undefined || val.poto === "" ?
                             <img className={classes.img} src={img1} />
                             :
-                            <img className={classes.img} src={`${link}/images/${val.poto}`} />
+                            <img className={classes.img} src={val.poto.url} />
 
                     }
                 </div>
