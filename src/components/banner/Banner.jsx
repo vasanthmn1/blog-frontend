@@ -11,12 +11,12 @@ const Banner = () => {
                     <h1>Create a blog.</h1>
                     <p>
 
-                        Share your story with the world. Stand <br />
-                        out with a professionally-designed blog<br />
-                        website that can be customized to fit<br />
-                        your brand. Build, manage, and<br />
-                        promote your blog with Squarespace’s <br />
-                        built-in suite of design and marketing<br />
+                        Share your story with the world. Stand
+                        out with a professionally-designed blog
+                        website that can be customized to fit
+                        your brand. Build, manage, and
+                        promote your blog with Squarespace’s
+                        built-in suite of design and marketing
                         tools.
                     </p>
                 </div>

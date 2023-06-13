@@ -9,6 +9,8 @@ const Register = () => {
 
     const { link } = useSelector((state) => state.link)
     const [err, setErr] = useState(false)
+    const [isloading, setisloading] = useState(false)
+
     const navigater = useNavigate()
     let myFormik = useFormik({
         initialValues: {
@@ -35,10 +37,12 @@ const Register = () => {
         onSubmit: async (values) => {
             setErr(false)
             try {
+                setisloading(true)
                 const res = await axios.post(`${link}/auth/register`, values)
 
                 res.data && navigater('/login')
-                console.log(res);
+                setisloading(false)
+
             } catch (error) {
                 setErr(true)
             }
@@ -98,7 +102,7 @@ const Register = () => {
                     </p>
 
                     <div className={classes.btn}>
-                        <button type='submit'>Register</button>
+                        <button disabled={isloading} type='submit'>{isloading ? "Loading..." : "Register"}</button>
                     </div>
 
                 </form>

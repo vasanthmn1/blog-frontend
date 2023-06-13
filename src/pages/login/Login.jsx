@@ -15,6 +15,8 @@ const Login = () => {
     const navigater = useNavigate()
     const dispatch = useDispatch()
     const [err, setErr] = useState(false)
+    const [isloading, setisloading] = useState(false)
+
     let myFormik = useFormik({
         initialValues: {
             username: "",
@@ -25,7 +27,7 @@ const Login = () => {
             let err = {}
 
             if (!values.email) {
-                err.email = "Enter full email"
+                err.email = "Enter Valid email"
             } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                 err.email = 'Invalid email address !!';
             }
@@ -39,10 +41,12 @@ const Login = () => {
             setErr(false)
             dispatch(loginStart())
             try {
+                setisloading(true)
                 const res = await axios.post(`${link}/auth/login`, values)
                 localStorage.setItem('user', JSON.stringify(res.data.user))
                 console.log(res.data.user);
                 dispatch(loginSuccess(res.data.user))
+                setisloading(false)
                 navigater('/')
             } catch (error) {
                 console.log(error);
@@ -97,11 +101,8 @@ const Login = () => {
                     </p>
 
                     <div className={classes.btn}>
-                        <button type='submit' >
+                        <button disabled={isloading} type='submit'>{isloading ? "Loading..." : "Login"}</button>
 
-
-                            Login
-                        </button>
                     </div>
                 </form>
             </div>
