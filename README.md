@@ -20,3 +20,4 @@ Technologies Used:
 - Redux with Redux Toolkit: A state management library for predictable and efficient handling of application state.
 - react-router-dom: A routing library for React applications, enabling dynamic routing and navigation.
 
+or a live demo, visit [Linko](https://spontaneous-mooncake-060ef3.netlify.app/home).
