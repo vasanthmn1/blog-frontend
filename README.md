@@ -4,7 +4,7 @@ Features:
 
 - User-friendly Interface: Our website provides an intuitive and user-friendly interface, ensuring a seamless browsing experience for readers and bloggers.
 
--Blog Creation and Management: Bloggers can easily create and manage their blog posts, including writing, editing, and deleting articles.
+- Blog Creation and Management: Bloggers can easily create and manage their blog posts, including writing, editing, and deleting articles.
 
 -Media Management: With the integration of Cloudinary, users can effortlessly upload, store, and manage images and other media assets for their blog posts.
 Responsive Design: The website is built with Bootstrap 5, offering a responsive and visually appealing layout that adapts to different screen sizes and devices.
