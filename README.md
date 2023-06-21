@@ -13,10 +13,10 @@ Features:
 
 Technologies Used:
 
--  React: A JavaScript library for building dynamic and interactive user interfaces.
-💚 Mongoose: A MongoDB object modeling tool used for efficient data handling and integration with the Express server.
-💚 Express: A fast and minimalist web application framework for Node.js, providing a robust backend foundation.
-- 💚 Node.js: A JavaScript runtime environment that allows server-side execution of JavaScript code.
-- 💚 Redux with Redux Toolkit: A state management library for predictable and efficient handling of application state.
-- 💚 react-router-dom: A routing library for React applications, enabling dynamic routing and navigation.
+- React: A JavaScript library for building dynamic and interactive user interfaces.
+- Mongoose: A MongoDB object modeling tool used for efficient data handling and integration with the Express server.
+- Express: A fast and minimalist web application framework for Node.js, providing a robust backend foundation.
+- Node.js: A JavaScript runtime environment that allows server-side execution of JavaScript code.
+- Redux with Redux Toolkit: A state management library for predictable and efficient handling of application state.
+- react-router-dom: A routing library for React applications, enabling dynamic routing and navigation.
 
